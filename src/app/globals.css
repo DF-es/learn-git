@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+    /* Softer, more organic palette */
+    --primary-color: #79a39a; /* Gentle Teal/Sage */
+    --primary-hover: #6a9289;
+    --bg-dark: #fbf9f4; /* Warmer, softer cream */
+    --bg-panel: #ffffff;
+    --text-main: #4a4a4a; /* Softer charcoal */
+    --text-muted: #8e8e8e;
+    --border-color: #efede8;
+    --accent-red: #f2b5b5;
+    --accent-green: #b8dbc0;
+    --accent-gold: #e8c68d; /* Soft honey gold */
+    
+    /* Gentler Design Tokens */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-gentle: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition-soft: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.7; /* Increased for readability */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .guild-brand, .label, .role, .font-cinzel {
+    font-family: 'Cinzel', 'Noto Sans JP', serif;
+    letter-spacing: 0.02em;
+}
+
+/* Base Utility for rounded corners */
+.rounded-gentle { border-radius: var(--radius-md); }
+.rounded-pill { border-radius: 9999px; }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s var(--transition-soft) forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.5s var(--transition-soft) forwards;
+}
+
+/* History Mode / Viewed Only (Soften the dark mode too) */
+body.history-mode, body.view-only-mode {
+    --bg-dark: #1a1a1a;
+    --bg-panel: #242424;
+    --text-main: #d1d1d1;
+    --text-muted: #888888;
+    --border-color: #333333;
+    --primary-color: #bfa16d;
+}
+
+/* Sidebar Custom Scrollbar for gentle look */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #e0ded9;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d1cfc9;
+}
