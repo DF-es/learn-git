@@ -1,9 +1,10 @@
 "use client";
 
+// Forced refresh: 2026-03-15T22:45
 import { useGuild } from "@/context/GuildContext";
 
 export default function Sidebar() {
-  const { appData, activeGuild, setActiveSection, setViewMode, setActiveGuild } = useGuild();
+  const { appData, activeGuild, setActiveSection, setActiveGuild } = useGuild();
 
   const handleNavClick = (section: string) => {
     setActiveSection(section);
@@ -16,65 +17,72 @@ export default function Sidebar() {
   if (!activeGuild) return null;
 
   return (
-    <nav className="w-[320px] bg-[var(--bg-panel)] border-r border-[var(--border-color)] flex flex-col h-full transition-all duration-500 shadow-sm">
-      <div className="p-8 text-[1.4rem] text-[var(--primary-color)] flex items-center gap-3 border-b border-[var(--border-color)] font-cinzel font-bold tracking-tight">
-        <i className="fa-solid fa-shield-halved"></i>
-        <span>{activeGuild.name}</span>
+    <nav 
+      className="bg-[var(--bg-panel)] border-r border-[var(--border-color)] flex flex-col h-full transition-all duration-500 shadow-sm"
+      style={{ width: '300px', minWidth: '300px' }}
+    >
+      <div className="p-8 pl-12 text-[var(--primary-color)] flex items-center gap-6 border-b border-[var(--border-color)] font-bold tracking-tight">
+        <i className="fa-solid fa-shield-halved" style={{ fontSize: '2.2rem' }}></i>
+        <span style={{ fontSize: '1.5rem', fontWeight: 600 }}>{activeGuild.name}</span>
       </div>
-      <ul className="list-none p-6 space-y-2 flex-1 outline-none">
+      <ul className="list-none p-0 py-8 pl-10 space-y-4 flex-1 outline-none">
         <li
-          className={`p-5 px-6 cursor-pointer rounded-[var(--radius-md)] transition-all duration-300 flex items-center gap-4 ${
+          className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
             appData.activeSection === "dashboard"
-              ? "bg-[rgba(121,163,154,0.12)] text-[var(--primary-color)] font-bold shadow-sm"
-              : "text-[var(--text-muted)] hover:bg-[rgba(121,163,154,0.05)] hover:text-[var(--primary-color)]"
+              ? "bg-[var(--bg-dark)] text-[var(--primary-color)] font-bold border-r-8 border-[var(--primary-color)] shadow-inner"
+              : "text-[var(--text-muted)] hover:bg-[var(--bg-dark)]/50 hover:text-[var(--primary-color)]"
           }`}
+          style={{ padding: '10px 12px', paddingLeft: '32px' }}
           onClick={() => handleNavClick("dashboard")}
         >
-          <i className="fa-solid fa-house w-5"></i>
-          <span className="font-medium">ギルド本部</span>
+          <i className="fa-solid fa-house" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
+          <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">ギルド本部</span>
         </li>
         <li
-          className={`p-5 px-6 cursor-pointer rounded-[var(--radius-md)] transition-all duration-300 flex items-center gap-4 ${
+          className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
             appData.activeSection === "quests"
-              ? "bg-[rgba(121,163,154,0.12)] text-[var(--primary-color)] font-bold shadow-sm"
-              : "text-[var(--text-muted)] hover:bg-[rgba(121,163,154,0.05)] hover:text-[var(--primary-color)]"
+              ? "bg-[var(--bg-dark)] text-[var(--primary-color)] font-bold border-r-8 border-[var(--primary-color)] shadow-inner"
+              : "text-[var(--text-muted)] hover:bg-[var(--bg-dark)]/50 hover:text-[var(--primary-color)]"
           }`}
+          style={{ padding: '10px 12px', paddingLeft: '32px' }}
           onClick={() => handleNavClick("quests")}
         >
-          <i className="fa-solid fa-scroll w-5"></i>
-          <span className="font-medium">クエスト・ロードマップ</span>
+          <i className="fa-solid fa-scroll" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
+          <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">クエスト</span>
         </li>
         {activeGuild.type !== "personal" && (
           <li
-            className={`p-5 px-6 cursor-pointer rounded-[var(--radius-md)] transition-all duration-300 flex items-center gap-4 ${
+            className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
               appData.activeSection === "members"
-                ? "bg-[rgba(121,163,154,0.12)] text-[var(--primary-color)] font-bold shadow-sm"
-                : "text-[var(--text-muted)] hover:bg-[rgba(121,163,154,0.05)] hover:text-[var(--primary-color)]"
+                ? "bg-[var(--bg-dark)] text-[var(--primary-color)] font-bold border-r-8 border-[var(--primary-color)] shadow-inner"
+                : "text-[var(--text-muted)] hover:bg-[var(--bg-dark)]/50 hover:text-[var(--primary-color)]"
             }`}
+            style={{ padding: '10px 12px', paddingLeft: '32px' }}
             onClick={() => handleNavClick("members")}
           >
-            <i className="fa-solid fa-users w-5"></i>
-            <span className="font-medium">メンバー</span>
+            <i className="fa-solid fa-users" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
+            <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">メンバー</span>
           </li>
         )}
         <li
-          className={`p-5 px-6 cursor-pointer rounded-[var(--radius-md)] transition-all duration-300 flex items-center gap-4 ${
+          className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
             appData.activeSection === "rewards"
-              ? "bg-[rgba(121,163,154,0.12)] text-[var(--primary-color)] font-bold shadow-sm"
-              : "text-[var(--text-muted)] hover:bg-[rgba(121,163,154,0.05)] hover:text-[var(--primary-color)]"
+              ? "bg-[var(--bg-dark)] text-[var(--primary-color)] font-bold border-r-8 border-[var(--primary-color)] shadow-inner"
+              : "text-[var(--text-muted)] hover:bg-[var(--bg-dark)]/50 hover:text-[var(--primary-color)]"
           }`}
+          style={{ padding: '10px 12px', paddingLeft: '32px' }}
           onClick={() => handleNavClick("rewards")}
         >
-          <i className="fa-solid fa-gem w-5"></i>
-          <span className="font-medium">報酬・免罪符</span>
+          <i className="fa-solid fa-gem" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
+          <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">報酬・免罪符</span>
         </li>
       </ul>
-      <div className="mt-auto p-6 border-t border-[var(--border-color)] bg-[var(--bg-dark)]/30">
+      <div className="mt-auto p-8 pl-12 border-t border-[var(--border-color)]">
         <button
-          className="w-full bg-[var(--bg-panel)] text-[var(--text-muted)] border border-[var(--border-color)] p-3 rounded-[var(--radius-md)] font-bold cursor-pointer transition-all duration-400 flex items-center justify-center gap-2 hover:bg-white hover:text-[var(--accent-red)] hover:border-[var(--accent-red)]/30 hover:shadow-sm"
+          className="w-full bg-[var(--bg-dark)] text-[var(--text-main)] border-none p-6 rounded-[var(--radius-md)] text-[1.2rem] font-bold cursor-pointer transition-all duration-400 flex items-center justify-center gap-4 hover:bg-[#ebe9e1]"
           onClick={handleExit}
         >
-          <i className="fa-solid fa-door-open"></i> ギルド退室
+          <i className="fa-solid fa-door-open text-[1.5rem]"></i> ギルド退室
         </button>
       </div>
     </nav>

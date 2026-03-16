@@ -46,7 +46,7 @@ export default function GuildSelection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-[1100px] px-10 pb-32 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-[800px] px-10 pb-32 justify-center mx-auto animate-fadeIn" style={{ animationDelay: '0.1s' }}>
         {filteredGuilds.map((guild) => (
           <div
             key={guild.id}
@@ -89,12 +89,12 @@ export default function GuildSelection() {
         {appData.viewMode === "active" && (
           <div
             onClick={() => setIsModalOpen(true)}
-            className="bg-[var(--bg-panel)] border-2 border-dashed border-[var(--border-color)] rounded-[var(--radius-lg)] p-10 flex flex-col items-center justify-center cursor-pointer transition-all duration-400 hover:bg-[var(--primary-color)]/5 hover:border-[var(--primary-color)] group"
+            className="bg-[var(--bg-panel)] border-2 border-dashed border-[var(--primary-color)]/40 rounded-[var(--radius-lg)] p-10 flex flex-col items-center justify-center cursor-pointer transition-all duration-400 hover:bg-[var(--primary-color)]/5 hover:border-[var(--primary-color)] group"
           >
-            <div className="w-16 h-16 bg-[var(--bg-dark)] rounded-full flex items-center justify-center mb-6 border-2 border-dashed border-[var(--border-color)] group-hover:border-[var(--primary-color)] transition-all">
-              <i className="fa-solid fa-plus text-[1.5rem] text-[var(--text-muted)] group-hover:text-[var(--primary-color)] group-hover:rotate-90 transition-all duration-500"></i>
+            <div className="w-16 h-16 bg-transparent rounded-full flex items-center justify-center mb-6 transition-all">
+              <i className="fa-solid fa-plus text-[2rem] text-[var(--primary-color)]/60 group-hover:text-[var(--primary-color)] group-hover:rotate-90 transition-all duration-500"></i>
             </div>
-            <h3 className="text-[1.2rem] font-bold text-[var(--text-muted)] group-hover:text-[var(--primary-color)]">新規ギルド設立</h3>
+            <h3 className="text-[1.2rem] font-bold text-[var(--text-main)] group-hover:text-[var(--primary-color)]">新規ギルド設立</h3>
           </div>
         )}
       </div>

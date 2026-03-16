@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { AppData, Guild, GuildType, GuildState, Quest, Reward, Roadmap, Member, ViewMode } from '../types';
+import { AppData, Guild, GuildType, GuildState, ViewMode } from '../types';
 
 interface GuildContextType {
     appData: AppData;
@@ -63,6 +63,7 @@ export function GuildProvider({ children }: { children: React.ReactNode }) {
         const saved = localStorage.getItem('soloGuildAppData');
         if (saved) {
             try {
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setAppData(JSON.parse(saved));
             } catch (e) {
                 console.error("Failed to load app data", e);

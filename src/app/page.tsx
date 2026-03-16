@@ -2,6 +2,7 @@
 
 import { useGuild } from "@/context/GuildContext";
 import { GuildProvider } from "@/context/GuildContext";
+import { UIProvider } from "@/context/UIContext";
 import AppLayout from "@/components/layout/AppLayout";
 import GuildSelection from "@/components/layout/GuildSelection";
 import DashboardPage from "@/components/pages/DashboardPage";
@@ -37,7 +38,9 @@ function AppContent() {
 export default function Home() {
   return (
     <GuildProvider>
-      <AppContent />
+      <UIProvider>
+        <AppContent />
+      </UIProvider>
     </GuildProvider>
   );
 }

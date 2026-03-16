@@ -1,8 +1,6 @@
 "use client";
 
 import { useGuild } from "@/context/GuildContext";
-import { Member } from "@/types";
-import Card from "@/components/common/Card";
 import Modal from "@/components/common/Modal";
 import { useState } from "react";
 

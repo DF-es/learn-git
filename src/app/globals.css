@@ -2,24 +2,32 @@
 
 :root {
     /* Softer, more organic palette */
-    --primary-color: #79a39a; /* Gentle Teal/Sage */
-    --primary-hover: #6a9289;
-    --bg-dark: #fbf9f4; /* Warmer, softer cream */
+    --primary-color: #8ca38f; /* Muted Sage Green */
+    --primary-hover: #7b947e;
+    --bg-dark: #fcfbf9; /* Lighter Cream / Off-White */
     --bg-panel: #ffffff;
-    --text-main: #4a4a4a; /* Softer charcoal */
-    --text-muted: #8e8e8e;
-    --border-color: #efede8;
-    --accent-red: #f2b5b5;
-    --accent-green: #b8dbc0;
-    --accent-gold: #e8c68d; /* Soft honey gold */
+    --text-main: #5c5c5c; /* Slightly lighter charcoal */
+    --text-muted: #999999;
+    --border-color: #e8e6e1;
+    --accent-red: #ffb3b3;
+    --accent-green: #a7cfae;
+    --accent-gold: #ebd1a1;
     
     /* Gentler Design Tokens */
     --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --shadow-gentle: 0 4px 20px rgba(0, 0, 0, 0.04);
-    --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --transition-soft: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --shadow-gentle: 0 4px 15px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.06);
+    --transition-soft: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    /* Shared Action Button Styles */
+    --btn-action-padding: 14px 30px;
+    --btn-action-font-size: 1rem;
+
+    /* Shared Card Item Padding */
+    --card-item-padding-y: 1.75rem;
+    --card-item-padding-x: 2.25rem;
 }
 
 * {
@@ -29,10 +37,11 @@
 }
 
 body {
+    font-size: 110%; /* Increase base font size to make everything larger */
     font-family: 'Noto Sans JP', sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-main);
-    line-height: 1.7; /* Increased for readability */
+    line-height: 1.8; /* Increased for readability */
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }

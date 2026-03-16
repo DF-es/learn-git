@@ -3,6 +3,7 @@
 import { useGuild } from "@/context/GuildContext";
 import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
+import AvatarModal from "@/components/common/AvatarModal";
 import React from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -24,9 +25,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         )}
         <Topbar />
-        <div className="p-16 animate-fadeIn">
+        <div 
+          className="animate-fadeIn"
+          style={{ padding: '60px 150px' }}
+        >
             {children}
         </div>
+        <AvatarModal />
       </main>
     </div>
   );
