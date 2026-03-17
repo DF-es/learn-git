@@ -11,7 +11,18 @@ import MembersPage from "@/components/pages/MembersPage";
 import RewardsPage from "@/components/pages/RewardsPage";
 
 function AppContent() {
-  const { activeGuild, appData } = useGuild();
+  const { activeGuild, appData, isLoading } = useGuild();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#fdfaf6] text-[#b49b7e]">
+        <div className="flex flex-col items-center gap-4 animate-pulse">
+          <i className="fa-solid fa-scroll text-5xl"></i>
+          <p className="font-serif text-xl tracking-widest">LOADING GUILD...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!activeGuild) {
     return <GuildSelection />;

@@ -2,37 +2,25 @@ export type GuildType = 'personal' | 'family' | 'company' | 'friend';
 export type GuildStatus = 'active' | 'retired';
 export type ViewMode = 'active' | 'retired';
 
-export interface Quest {
-    id: number;
-    name: string;
-    points: number;
-    lastCompleted?: string; // YYYY-MM-DD
-}
-
 export interface Reward {
     id: number;
     name: string;
     points: number;
 }
 
-export interface StepQuest {
+export interface Quest {
     id: number;
     name: string;
     points: number;
+    type: 'routine' | 'target' | 'stage';
+    recurrence?: string | null; // e.g., 'daily', 'weekly'
     isCompleted: boolean;
+    lastCompleted?: string | null; // YYYY-MM-DD
+    parentQuestId?: number | null;
+    completionCount?: number;
+    subQuests?: Quest[];
 }
 
-export interface RoadmapStep {
-    id: number;
-    name: string;
-    quests: StepQuest[];
-}
-
-export interface Roadmap {
-    id: number;
-    name: string;
-    steps: RoadmapStep[];
-}
 
 export interface Member {
     id: number;
@@ -47,7 +35,6 @@ export interface GuildState {
     members: Member[];
     quests: Quest[];
     rewards: Reward[];
-    roadmaps: Roadmap[];
     description: string;
     avatar: string;
 }
@@ -63,8 +50,8 @@ export interface Guild {
 export interface AppData {
     activeGuildId: number | null;
     activeSection: string;
-    activeQuestTab: 'quest-board' | 'roadmap-board';
-    activeMilestone: { roadmapId: number | null; stepId: number | null };
+    activeTargetQuestId: number | null;
     viewMode: ViewMode;
     guilds: Guild[];
+    publicId?: string;
 }

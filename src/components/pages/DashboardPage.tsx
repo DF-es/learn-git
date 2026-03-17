@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useUI } from "@/context/UIContext";
 
 export default function DashboardPage() {
-  const { activeGuild, updateDescription } = useGuild();
+  const { appData, activeGuild, updateDescription } = useGuild();
   const { setAvatarModalOpen } = useUI();
   const [isDescModalOpen, setIsDescModalOpen] = useState(false);
   const [editDesc, setEditDesc] = useState(activeGuild?.state.description || "");
@@ -28,21 +28,28 @@ export default function DashboardPage() {
         <Card
           title="歓迎、ギルドマスター"
           headerAction={
-            <button
-              onClick={() => {
-                if (activeGuild.status === 'retired') return;
-                setEditDesc(state.description);
-                setIsDescModalOpen(true);
-              }}
-              disabled={activeGuild.status === 'retired'}
-              className={`bg-transparent border-none transition-all p-2 rounded-full ${
-                activeGuild.status === 'retired' 
-                  ? "text-[var(--text-muted)] cursor-not-allowed hidden" 
-                  : "text-[var(--text-muted)] cursor-pointer hover:text-[var(--primary-color)] hover:bg-[var(--bg-dark)]"
-              }`}
-            >
-              <i className="fa-solid fa-pen-to-square"></i>
-            </button>
+            <div className="flex items-center gap-4">
+              {appData.publicId && (
+                <span className="text-[0.8rem] bg-[var(--bg-dark)] text-[var(--text-muted)] px-3 py-1 rounded-full font-bold border border-[var(--border-color)]">
+                  ID: {appData.publicId}
+                </span>
+              )}
+              <button
+                onClick={() => {
+                  if (activeGuild.status === 'retired') return;
+                  setEditDesc(state.description);
+                  setIsDescModalOpen(true);
+                }}
+                disabled={activeGuild.status === 'retired'}
+                className={`bg-transparent border-none transition-all p-2 rounded-full ${
+                  activeGuild.status === 'retired' 
+                    ? "text-[var(--text-muted)] cursor-not-allowed hidden" 
+                    : "text-[var(--text-muted)] cursor-pointer hover:text-[var(--primary-color)] hover:bg-[var(--bg-dark)]"
+                }`}
+              >
+                <i className="fa-solid fa-pen-to-square"></i>
+              </button>
+            </div>
           }
         >
           <p className="text-[var(--text-main)] italic text-xl leading-relaxed py-3">「{state.description}」</p>

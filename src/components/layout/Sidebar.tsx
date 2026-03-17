@@ -50,20 +50,18 @@ export default function Sidebar() {
           <i className="fa-solid fa-scroll" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
           <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">クエスト</span>
         </li>
-        {activeGuild.type !== "personal" && (
-          <li
-            className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
-              appData.activeSection === "members"
-                ? "bg-[var(--bg-dark)] text-[var(--primary-color)] font-bold border-r-8 border-[var(--primary-color)] shadow-inner"
-                : "text-[var(--text-muted)] hover:bg-[var(--bg-dark)]/50 hover:text-[var(--primary-color)]"
-            }`}
-            style={{ padding: '10px 12px', paddingLeft: '32px' }}
-            onClick={() => handleNavClick("members")}
-          >
-            <i className="fa-solid fa-users" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
-            <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">メンバー</span>
-          </li>
-        )}
+        <li
+          className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
+            appData.activeSection === "members"
+              ? "bg-[var(--bg-dark)] text-[var(--primary-color)] font-bold border-r-8 border-[var(--primary-color)] shadow-inner"
+              : "text-[var(--text-muted)] hover:bg-[var(--bg-dark)]/50 hover:text-[var(--primary-color)]"
+          }`}
+          style={{ padding: '10px 12px', paddingLeft: '32px' }}
+          onClick={() => handleNavClick("members")}
+        >
+          <i className="fa-solid fa-users" style={{ fontSize: '1.6rem', width: '32px', textAlign: 'center' }}></i>
+          <span style={{ fontSize: '1.25rem' }} className="font-medium tracking-wider">メンバー</span>
+        </li>
         <li
           className={`cursor-pointer transition-all duration-300 flex items-center gap-5 ${
             appData.activeSection === "rewards"
